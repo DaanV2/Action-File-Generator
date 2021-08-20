@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import { FileData, Filemap } from "./Filemap";
-import { FileSpecification, ReplaceSpecification } from "./Specification";
+import { FileData, Filemap } from "./filemap";
+import { FileSpecification, ReplaceSpecification } from "./specification";
 
 export function Process(specfile: string, folder: string): boolean {
   if (!fs.existsSync(specfile)) {

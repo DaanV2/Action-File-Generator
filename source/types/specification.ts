@@ -1,5 +1,3 @@
-import { exception } from "console";
-
 /** */
 export interface FileSpecification {
   /** */

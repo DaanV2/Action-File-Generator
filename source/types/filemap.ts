@@ -1,5 +1,5 @@
 import path from "path";
-import { FileProcess, ReplaceSpecification } from "./Specification";
+import { FileProcess, ReplaceSpecification } from "./specification";
 
 /** */
 export class Filemap {
