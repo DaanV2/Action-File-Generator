@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import path from "path";
-import { fixPath } from "../../source/Types/Filemap";
+import { fixPath } from "../../source/types/Filemap";
 
 describe("Filemap", () => {
   it("fixPath", () => {

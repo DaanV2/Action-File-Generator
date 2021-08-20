@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { FileSpecification } from "../../source/Types/Specification";
+import { FileSpecification } from "../../source/types/Specification";
 
 describe("FileSpecification", () => {
   it("Cast No Errors1", () =>

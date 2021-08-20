@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as core from "@actions/core";
-import { Process } from "./Types/process";
+import { Process } from "./types/process";
 
 //Start code
 try {
