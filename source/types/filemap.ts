@@ -74,7 +74,7 @@ export class FileData {
  */
 export function fixPath(filepath: string, folder: string): string {
   if (!path.isAbsolute(filepath)) {
-    filepath = path.resolve(folder, filepath);
+    filepath = path.join(folder, filepath);
   }
 
   return filepath;
