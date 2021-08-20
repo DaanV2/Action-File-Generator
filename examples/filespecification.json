@@ -1,5 +1,5 @@
 {
-  "$schema": "",
+  "$schema": "https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/schema/filespecification.schema.json",
   "process": [
     {
       "source": "./template/account",

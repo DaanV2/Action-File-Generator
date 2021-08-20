@@ -18,14 +18,12 @@
           "source": {
             "title": "Source",
             "description": "TODO",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "destination": {
             "title": "Destination",
             "description": "TODO",
-            "type": "string",
-            "format": "uri"
+            "type": "string"
           },
           "replace": {
             "type": "array",

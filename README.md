@@ -11,26 +11,29 @@ Its creates a list of each markdown files in the folders and displays it under d
 
 ## Inputs
 
-**folder**: The folder path to start at, use `${{github.workspace}}`
+**folder**: The folder path to start at, defaults to `${{github.workspace}}` **specification**: The folder path to start at, defaults to
+`${{github.workspace}}/filespecification.json`
 
 ## Examples
 
-![example](https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/assets/example.PNG)
+Example [filespecification.json](./examples/filespecification.json)
+
+you can use the provide json schema: `https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/schema/filespecification.schema.json`
 
 ## Example usage
 
 ```yml
 # This is a basic workflow to help you get started with Actions
 
-name: Create markdown indexes
+name: generate-files
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -47,9 +50,10 @@ jobs:
       - uses: actions/checkout@v2.3.4
 
       # Runs a single command using the runners shell
-      - uses: DaanV2/Action-File-Generator@v1.5.13
+      - uses: DaanV2/Action-File-Generator@v1.0.0
         with:
-          folder: ${{github.workspace}}
+          folder: ${{github.workspace}}/data
+          specification: ${{github.workspace}}/data/specification.json
 
       - name: Commit changes
         continue-on-error: true
