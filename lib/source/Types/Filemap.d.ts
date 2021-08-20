@@ -1,4 +1,4 @@
-import { FileProcess, ReplaceSpecification } from "./Specification";
+import { FileProcess, ReplaceSpecification } from "./specification";
 /** */
 export declare class Filemap {
     /** */

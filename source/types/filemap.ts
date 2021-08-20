@@ -23,7 +23,7 @@ export class Filemap {
     let replacements = spec.replace;
 
     const out = FileData.create(source, destination, replacements);
-    this.files.set(source, out);
+    this.files.set(out.destination, out);
 
     return out;
   }
