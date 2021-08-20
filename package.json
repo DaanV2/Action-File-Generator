@@ -4,7 +4,7 @@
   "description": "The github action that creates index pages for your project",
   "main": "lib/source/action.js",
   "scripts": {
-    "compile": "tsc -b && ncc build",
+    "compile": "tsc -b && npx ncc build",
     "build": "npm run clean && npm run compile",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "test": "mocha --debug-brk",
