@@ -1,6 +1,6 @@
 {
   "name": "action-file-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The github action that creates index pages for your project",
   "main": "lib/source/action.js",
   "scripts": {
@@ -13,8 +13,8 @@
     "prepublishOnly": "npm test && npm run build",
     "preversion": "",
     "postversion": "git push && git push --tags",
-    "version": "git add -A src",
-    "watch": "tsc -w -p ./src"
+    "version": "git add -A source",
+    "watch": "tsc -w -p ./source"
   },
   "repository": {
     "type": "git",
