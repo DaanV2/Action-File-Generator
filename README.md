@@ -3,7 +3,8 @@
 - [Action-File-Generator](#action-file-generator)
   - [Inputs](#inputs)
   - [Examples](#examples)
-  - [Example usage](#example-usage)
+    - [Example Filespecification](#example-filespecification)
+    - [Example usage](#example-usage)
 
 The github action that creates index pages for your project, the changes still need to be submitted afterwards.
 
@@ -11,16 +12,36 @@ Its creates a list of each markdown files in the folders and displays it under d
 
 ## Inputs
 
-**folder**: The folder path to start at, defaults to `${{github.workspace}}` **specification**: The folder path to start at, defaults to
-`${{github.workspace}}/filespecification.json`
+**folder**: The folder path to start at, defaults to `${{github.workspace}}`  
+**specification**: The folder path to start at, defaults to `${{github.workspace}}/filespecification.json`
+
+---
 
 ## Examples
 
-Example [filespecification.json](./examples/filespecification.json)
+### Example Filespecification
 
-you can use the provide json schema: `https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/schema/filespecification.schema.json`
+Example [filespecification.json](./examples/filespecification.json) you can use the provide json schema:
+`https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/schema/filespecification.schema.json`
 
-## Example usage
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/schema/filespecification.schema.json",
+  "process": [
+    {
+      "source": "./template/account",
+      "destination": "./accounts",
+      "replace": [
+        { "old": "%id%", "new": "steve", "path": true, "content": true },
+        { "old": "%first%", "new": "steve", "path": true, "content": true },
+        { "old": "%surname%", "new": "sample", "path": true, "content": true }
+      ]
+    }
+  ]
+}
+```
+
+### Example usage
 
 ```yml
 # This is a basic workflow to help you get started with Actions
