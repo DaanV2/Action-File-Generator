@@ -1,3 +1,5 @@
+import FastGlob from "fast-glob";
+import { fstat } from "fs";
 import path from "path";
 import { FileProcess, ReplaceSpecification } from "./specification";
 
@@ -17,13 +19,16 @@ export class Filemap {
    * @param replacements
    * @returns
    */
-  public add(spec: FileProcess, folder: string): FileData {
-    let source = fixPath(spec.source, folder);
-    let destination = fixPath(spec.destination, folder);
-    let replacements = spec.replace;
+  public add(spec: FileProcess, folder: string): FileData[] {
+    const source = fixPath(spec.source, folder);
+    const destination = fixPath(spec.destination, folder);
+    const replacements = spec.replace;
 
-    const out = FileData.create(source, destination, replacements);
-    this.files.set(out.destination, out);
+    const out = FileData.collect(source, destination, replacements);
+
+    out.forEach((fp) => {
+      this.files.set(fp.destination, fp);
+    });
 
     return out;
   }
@@ -59,10 +64,31 @@ export class FileData {
    * @param replacements
    * @returns
    */
-  static create(source: string, destination: string, replacements: ReplaceSpecification[]) {
+  static create(source: string, destination: string, replacements: ReplaceSpecification[]): FileData {
     destination = ReplaceSpecification.replaceFilepath(destination, replacements);
 
     return new FileData(source, destination, replacements);
+  }
+
+  /**
+   *
+   * @param source
+   * @param destination
+   * @param replacements
+   * @returns
+   */
+  static collect(source: string, destination: string, replacements: ReplaceSpecification[]): FileData[] {
+    const files = FastGlob.sync(["*"], { cwd: source });
+    const out: FileData[] = [];
+
+    files.forEach((filepath) => {
+      const sourceFile = filepath;
+      const destinationFile = sourceFile.replace(source, destination);
+
+      out.push(FileData.create(sourceFile, destinationFile, replacements));
+    });
+
+    return out;
   }
 }
 

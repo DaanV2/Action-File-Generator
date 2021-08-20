@@ -21,6 +21,11 @@ export function Process(specfile: string, folder: string): boolean {
 function executeFileProcess(value: FileData, key: string): void {
   console.log(`'${value.source}' => '${value.destination}'`);
 
+  if (!fs.existsSync(value.source)) {
+    console.error(`Cannot find file: ${value.source}`);
+    return;
+  }
+
   if (value.replacements.length <= 0) {
     fs.copyFileSync(value.source, value.destination);
   } else {

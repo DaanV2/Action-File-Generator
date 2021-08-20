@@ -12,48 +12,4 @@ describe("Filemap", () => {
 
     expect(file).to.equal("C:/temp/file.json");
   });
-
-  it("duplicate check", () => {
-    const mapper = new Filemap();
-
-    mapper.add(
-      {
-        source: "template/main.js",
-        destination: "/template/id/main.js",
-        replace: [
-          {
-            new: "id_20",
-            old: "id",
-            content: true,
-            path: true,
-          },
-        ],
-      },
-      "c:/test"
-    );
-
-    mapper.add(
-      {
-        source: "template/main.js",
-        destination: "/template/data_set/main.js",
-        replace: [
-          {
-            new: "id_20",
-            old: "data_set",
-            content: true,
-            path: true,
-          },
-        ],
-      },
-      "c:/test"
-    );
-
-    if (mapper.files.size > 1) {
-      let out = "{";
-      mapper.files.forEach((m, k) => (out += k + ": " + JSON.stringify(m) + ","));
-
-      out += "}";
-      expect.fail(out);
-    }
-  });
 });
