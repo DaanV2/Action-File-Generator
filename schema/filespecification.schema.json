@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "File Specification",
+  "description": "TODO",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "process": {
+      "title": "Process",
+      "description": "TODO",
+      "type": "array",
+      "items": {
+        "title": "Folder Process",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "title": "Source",
+            "description": "TODO",
+            "type": "string",
+            "format": "uri"
+          },
+          "destination": {
+            "title": "Destination",
+            "description": "TODO",
+            "type": "string",
+            "format": "uri"
+          },
+          "replace": {
+            "type": "array",
+            "title": "Replace",
+            "description": "TODO",
+            "items": {
+              "title": "Replace Item",
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["old", "new"],
+              "properties": {
+                "old": { "type": "string", "title": "Old", "description": "TODO" },
+                "new": { "type": "string", "title": "New", "description": "TODO" },
+                "path": { "type": "boolean", "default": true, "title": "New", "description": "TODO" },
+                "content": { "type": "boolean", "default": true, "title": "New", "description": "TODO" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

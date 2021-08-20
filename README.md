@@ -1,23 +1,21 @@
-# File-Generator
+# Action-File-Generator
 
-- [File-Generator](#file-generator)
+- [Action-File-Generator](#action-file-generator)
   - [Inputs](#inputs)
   - [Examples](#examples)
   - [Example usage](#example-usage)
 
 The github action that creates index pages for your project, the changes still need to be submitted afterwards.
 
-Its creates a list of each markdown files in the folders and displays it under documents.
-For each sub folder that has documentation, then that folder is displayed in categories.
+Its creates a list of each markdown files in the folders and displays it under documents. For each sub folder that has documentation, then that folder is displayed in categories.
 
 ## Inputs
 
-**folder**:
-The folder path to start at, use `${{github.workspace}}`
+**folder**: The folder path to start at, use `${{github.workspace}}`
 
 ## Examples
 
-![example](https://raw.githubusercontent.com/DaanV2/File-Generator/main/assets/example.PNG)
+![example](https://raw.githubusercontent.com/DaanV2/Action-File-Generator/main/assets/example.PNG)
 
 ## Example usage
 
@@ -26,13 +24,13 @@ The folder path to start at, use `${{github.workspace}}`
 
 name: Create markdown indexes
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,8 +47,8 @@ jobs:
       - uses: actions/checkout@v2.3.4
 
       # Runs a single command using the runners shell
-      - uses: DaanV2/File-Generator@v1.5.13
-        with: 
+      - uses: DaanV2/Action-File-Generator@v1.5.13
+        with:
           folder: ${{github.workspace}}
 
       - name: Commit changes
@@ -63,4 +61,3 @@ jobs:
           git commit -m "auto: Generated typescript includes"
           git push
 ```
-

@@ -1,0 +1,14 @@
+{
+  "$schema": "",
+  "process": [
+    {
+      "source": "./template/account",
+      "destination": "./accounts",
+      "replace": [
+        { "old": "%id%", "new": "steve", "path": true, "content": true },
+        { "old": "%first%", "new": "steve", "path": true, "content": true },
+        { "old": "%surname%", "new": "sample", "path": true, "content": true }
+      ]
+    }
+  ]
+}

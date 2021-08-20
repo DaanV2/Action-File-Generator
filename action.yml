@@ -1,5 +1,5 @@
-name: 'Markdown action: create indexes'
-description: 'Creates indexes pages for a markdown styled wiki'
+name: 'Action File-Generator'
+description: 'Copy paste file according to a filespecification'
 branding:
   icon: activity
   color: green
