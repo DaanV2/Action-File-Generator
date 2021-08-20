@@ -9,7 +9,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "test": "mocha --debug-brk",
     "clean": "rimraf lib",
-    "pretest": "npm run build",
+    "pretest": "npm run clean && tsc -b",
     "prepublishOnly": "npm test && npm run build",
     "preversion": "",
     "postversion": "git push && git push --tags",
