@@ -14,4 +14,4 @@ inputs:
     default: "${{ github.workspace }}/filespecification.json"
 runs:
   using: "node12"
-  main: "lib/source/action.js"
+  main: "dist/index.js"
