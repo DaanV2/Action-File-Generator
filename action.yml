@@ -1,12 +1,17 @@
-name: 'Action File-Generator'
-description: 'Copy paste file according to a filespecification'
+name: "Action File-Generator"
+description: "Copy paste file according to a filespecification"
 branding:
   icon: activity
   color: green
 inputs:
   folder:
     description: The folder path to start at
-    required: true
+    required: false
+    default: "${{ github.workspace }}"
+  specification:
+    description: The file specification to read from
+    required: false
+    default: "${{ github.workspace }}/filespecification.json"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
