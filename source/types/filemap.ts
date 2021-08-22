@@ -82,7 +82,7 @@ export class FileData {
     source = path.normalize(source).replace(/\\/gi, "/");
     console.log("collecting files from: " + source);
 
-    const files = FastGlob.sync(["*"], { cwd: source });
+    const files = FastGlob.sync(["*", "**/*"], { cwd: source, onlyFiles: true, absolute: true });
     const out: FileData[] = [];
 
     console.log(`\tfound: ${files.length} files`);

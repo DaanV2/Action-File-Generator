@@ -13,6 +13,6 @@ describe("Filedata", () => {
     const files = FileData.collect(folder, __dirname, []);
 
     console.log(folder);
-    expect(files.length).to.equal(1);
+    expect(files.length).to.equal(2);
   });
 });
