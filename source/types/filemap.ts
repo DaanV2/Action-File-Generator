@@ -20,8 +20,8 @@ export class Filemap {
    * @returns
    */
   public add(spec: FileProcess, folder: string): FileData[] {
-    const source = fixPath(spec.source, folder);
-    const destination = fixPath(spec.destination, folder);
+    const source = fixFolderPath(spec.source, folder);
+    const destination = fixFolderPath(spec.destination, folder);
     const replacements = spec.replace;
 
     const out = FileData.collect(source, destination, replacements);
@@ -78,8 +78,6 @@ export class FileData {
    * @returns
    */
   static collect(source: string, destination: string, replacements: ReplaceSpecification[]): FileData[] {
-    if (!source.endsWith(path.sep)) source += path.sep;
-    source = path.normalize(source).replace(/\\/gi, "/");
     console.log("collecting files from: " + source);
 
     const files = FastGlob.sync(["*", "**/*"], { cwd: source, onlyFiles: true, absolute: true });
@@ -100,14 +98,17 @@ export class FileData {
 
 /**
  *
- * @param filepath
+ * @param folderpath
  * @param folder
  * @returns
  */
-export function fixPath(filepath: string, folder: string): string {
-  if (!path.isAbsolute(filepath)) {
-    filepath = path.join(folder, filepath);
+export function fixFolderPath(folderpath: string, folder: string): string {
+  if (!folderpath.endsWith(path.sep)) folderpath += path.sep;
+  folderpath = path.normalize(folderpath).replace(/\\/gi, "/");
+
+  if (!path.isAbsolute(folderpath)) {
+    folderpath = path.join(folder, folderpath);
   }
 
-  return filepath;
+  return folderpath;
 }
