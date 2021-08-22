@@ -78,6 +78,7 @@ export class FileData {
    * @returns
    */
   static collect(source: string, destination: string, replacements: ReplaceSpecification[]): FileData[] {
+    if (!source.endsWith(path.sep)) source += path.sep;
     source = path.normalize(source).replace(/\\/gi, "/");
     console.log("collecting files from: " + source);
 
