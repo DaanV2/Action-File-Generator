@@ -38,7 +38,7 @@ try {
     const Folder = core.getInput("folder", { required: false });
     const SpecFile = core.getInput("specification", { required: false });
     var result = false;
-    console.log("starting on: " + SpecFile);
+    console.log("starting on: " + Folder);
     //processing
     result = process_1.Process(SpecFile, Folder);
     if (fs.existsSync(Folder)) {
@@ -142,8 +142,10 @@ class FileData {
      * @returns
      */
     static collect(source, destination, replacements) {
+        console.log("collecting files from: " + source);
         const files = fast_glob_1.default.sync(["*"], { cwd: source });
         const out = [];
+        console.log(`\tfound: ${files.length} files`);
         files.forEach((filepath) => {
             const sourceFile = filepath;
             const destinationFile = sourceFile.replace(source, destination);
