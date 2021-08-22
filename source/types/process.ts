@@ -5,6 +5,8 @@ import { FileSpecification, ReplaceSpecification } from "./specification";
 export function Process(specfile: string, folder: string): boolean {
   if (!fs.existsSync(specfile)) {
     throw new Error("cannot find spec file: " + specfile);
+  } else {
+    console.log("reading spec file: " + specfile);
   }
 
   const content = fs.readFileSync(specfile).toString();
