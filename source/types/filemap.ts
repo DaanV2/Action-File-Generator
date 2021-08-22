@@ -78,7 +78,9 @@ export class FileData {
    * @returns
    */
   static collect(source: string, destination: string, replacements: ReplaceSpecification[]): FileData[] {
+    source = path.normalize(source).replace(/\\/gi, "/");
     console.log("collecting files from: " + source);
+
     const files = FastGlob.sync(["*"], { cwd: source });
     const out: FileData[] = [];
 
