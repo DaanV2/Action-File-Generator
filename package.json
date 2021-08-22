@@ -11,7 +11,7 @@
     "clean": "rimraf lib",
     "pretest": "npm run clean && tsc -b",
     "prepublishOnly": "npm test && npm run build",
-    "preversion": "",
+    "preversion": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags",
     "version": "git add -A source",
     "watch": "tsc -w -p ./source"
