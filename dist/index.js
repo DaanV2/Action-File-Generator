@@ -142,6 +142,8 @@ class FileData {
      * @returns
      */
     static collect(source, destination, replacements) {
+        if (!source.endsWith(path_1.default.sep))
+            source += path_1.default.sep;
         source = path_1.default.normalize(source).replace(/\\/gi, "/");
         console.log("collecting files from: " + source);
         const files = fast_glob_1.default.sync(["*"], { cwd: source });
