@@ -15,16 +15,16 @@ export function Process(specfile: string, folder: string): boolean {
 
   data.process.forEach((p) => map.add(p, folder));
 
-  map.files.forEach(executeFileProcess);
+  map.files.forEach((value) => executeFileProcess(value, folder));
 
   return true;
 }
 
-function executeFileProcess(value: FileData, key: string): void {
-  console.log(`'${value.source}' => '${value.destination}'`);
+function executeFileProcess(value: FileData, folder: string): void {
+  console.log(`'${value.source.replace(folder, "")}' => '${value.destination.replace(folder, "")}'`);
 
-  if (!fs.existsSync(value.source)) {
-    console.error(`Cannot find file: ${value.source}`);
+  if (!fs.existsSync(value.source.replace(folder, ""))) {
+    console.error(`Cannot find file: ${value.source.replace(folder, "")}`);
     return;
   }
 
