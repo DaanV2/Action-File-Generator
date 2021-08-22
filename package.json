@@ -1,6 +1,6 @@
 {
   "name": "action-file-generator",
-  "version": "0.0.11",
+  "version": "1.0.0",
   "description": "The github action that creates index pages for your project",
   "main": "lib/source/action.js",
   "scripts": {

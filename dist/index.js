@@ -146,7 +146,7 @@ class FileData {
             source += path_1.default.sep;
         source = path_1.default.normalize(source).replace(/\\/gi, "/");
         console.log("collecting files from: " + source);
-        const files = fast_glob_1.default.sync(["*"], { cwd: source });
+        const files = fast_glob_1.default.sync(["*", "**/*"], { cwd: source, onlyFiles: true, absolute: true });
         const out = [];
         console.log(`\tfound: ${files.length} files`);
         files.forEach((filepath) => {
