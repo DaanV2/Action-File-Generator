@@ -6,9 +6,7 @@
     - [Example Filespecification](#example-filespecification)
     - [Example usage](#example-usage)
 
-The github action that creates index pages for your project, the changes still need to be submitted afterwards.
-
-Its creates a list of each markdown files in the folders and displays it under documents. For each sub folder that has documentation, then that folder is displayed in categories.
+TODO Description
 
 ## Inputs
 
