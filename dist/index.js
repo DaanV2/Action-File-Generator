@@ -203,6 +203,9 @@ function Process(specfile, folder) {
     if (!fs.existsSync(specfile)) {
         throw new Error("cannot find spec file: " + specfile);
     }
+    else {
+        console.log("reading spec file: " + specfile);
+    }
     const content = fs.readFileSync(specfile).toString();
     const data = specification_1.FileSpecification.cast(JSON.parse(content));
     const map = new filemap_1.Filemap();
