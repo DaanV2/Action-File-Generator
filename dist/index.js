@@ -215,14 +215,14 @@ function Process(specfile, folder) {
     const data = specification_1.FileSpecification.cast(JSON.parse(content));
     const map = new filemap_1.Filemap();
     data.process.forEach((p) => map.add(p, folder));
-    map.files.forEach(executeFileProcess);
+    map.files.forEach((value) => executeFileProcess(value, folder));
     return true;
 }
 exports.Process = Process;
-function executeFileProcess(value, key) {
-    console.log(`'${value.source}' => '${value.destination}'`);
-    if (!fs.existsSync(value.source)) {
-        console.error(`Cannot find file: ${value.source}`);
+function executeFileProcess(value, folder) {
+    console.log(`'${value.source.replace(folder, "")}' => '${value.destination.replace(folder, "")}'`);
+    if (!fs.existsSync(value.source.replace(folder, ""))) {
+        console.error(`Cannot find file: ${value.source.replace(folder, "")}`);
         return;
     }
     if (value.replacements.length <= 0) {
