@@ -80,7 +80,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.fixPath = exports.FileData = exports.Filemap = void 0;
+exports.fixFolderPath = exports.FileData = exports.Filemap = void 0;
 const fast_glob_1 = __importDefault(__nccwpck_require__(1525));
 const path_1 = __importDefault(__nccwpck_require__(5622));
 const specification_1 = __nccwpck_require__(2929);
@@ -97,8 +97,8 @@ class Filemap {
      * @returns
      */
     add(spec, folder) {
-        const source = fixPath(spec.source, folder);
-        const destination = fixPath(spec.destination, folder);
+        const source = fixFolderPath(spec.source, folder);
+        const destination = fixFolderPath(spec.destination, folder);
         const replacements = spec.replace;
         const out = FileData.collect(source, destination, replacements);
         out.forEach((fp) => {
@@ -142,9 +142,6 @@ class FileData {
      * @returns
      */
     static collect(source, destination, replacements) {
-        if (!source.endsWith(path_1.default.sep))
-            source += path_1.default.sep;
-        source = path_1.default.normalize(source).replace(/\\/gi, "/");
         console.log("collecting files from: " + source);
         const files = fast_glob_1.default.sync(["*", "**/*"], { cwd: source, onlyFiles: true, absolute: true });
         const out = [];
@@ -160,17 +157,20 @@ class FileData {
 exports.FileData = FileData;
 /**
  *
- * @param filepath
+ * @param folderpath
  * @param folder
  * @returns
  */
-function fixPath(filepath, folder) {
-    if (!path_1.default.isAbsolute(filepath)) {
-        filepath = path_1.default.join(folder, filepath);
+function fixFolderPath(folderpath, folder) {
+    if (!folderpath.endsWith(path_1.default.sep))
+        folderpath += path_1.default.sep;
+    folderpath = path_1.default.normalize(folderpath).replace(/\\/gi, "/");
+    if (!path_1.default.isAbsolute(folderpath)) {
+        folderpath = path_1.default.join(folder, folderpath);
     }
-    return filepath;
+    return folderpath;
 }
-exports.fixPath = fixPath;
+exports.fixFolderPath = fixFolderPath;
 //# sourceMappingURL=filemap.js.map
 
 /***/ }),
