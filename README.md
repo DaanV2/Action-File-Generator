@@ -6,7 +6,7 @@
     - [Example Filespecification](#example-filespecification)
     - [Example usage](#example-usage)
 
-TODO Description
+A github action that copies files to the given destination. It can also replace text in the path of the file and the contents of the file.
 
 ## Inputs
 
