@@ -12,7 +12,7 @@ try {
 
   var result = false;
 
-  console.log("starting on: " + SpecFile);
+  console.log("starting on: " + Folder);
 
   //processing
   result = Process(SpecFile, Folder);

@@ -78,8 +78,11 @@ export class FileData {
    * @returns
    */
   static collect(source: string, destination: string, replacements: ReplaceSpecification[]): FileData[] {
+    console.log("collecting files from: " + source);
     const files = FastGlob.sync(["*"], { cwd: source });
     const out: FileData[] = [];
+
+    console.log(`\tfound: ${files.length} files`);
 
     files.forEach((filepath) => {
       const sourceFile = filepath;
